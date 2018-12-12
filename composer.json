@@ -1,0 +1,22 @@
+{
+    "name": "sebastiankennedy\/laravel-mail-ali-cloud-direct-mail",
+    "type": "library",
+    "description": "Ali Cloud Direct Mail for Laravel Application.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SebastianKennedy",
+            "email": "sebastiankennedy@foxmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^5.5",
+        "swiftmailer/swiftmailer": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SebastianKennedy\\LaravelMailAliCloudDirectMail\\": "src"
+        }
+    }
+}

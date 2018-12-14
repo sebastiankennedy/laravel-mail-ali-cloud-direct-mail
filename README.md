@@ -1,6 +1,6 @@
 <h1 align="center"> laravel-mail-ali-cloud-direct-mail </h1>
 
-<p align="center">:e-mail: Ali Cloud Drirect Mail for Laravel Application..</p>
+<p align="center">:e-mail: Ali Cloud Drirect Mail for Laravel Application.</p>
 
 
 ## Installing

@@ -18,5 +18,12 @@
         "psr-4": {
             "SebastianKennedy\\LaravelMailAliCloudDirectMail\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SebastianKennedy\\LaravelMailAliCloudDirectMail\\DirectMailServiceProvider"
+            ]
+        }
     }
 }

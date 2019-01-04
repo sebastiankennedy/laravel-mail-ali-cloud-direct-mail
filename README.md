@@ -49,3 +49,31 @@ MIT
 
 ## Learning
 
+### 疑惑
+
+- Laravel 基于 SwiftMailer 库提供邮件 API
+    - SwiftMailer 库是什么？
+    - Laravel 如何基于 SwiftMailer 提供邮件 API
+
+### 概念
+
+- 在 Laravel 中，每封邮件都可以表示为「可邮寄」类。
+
+### 配置
+
+- 发件人
+    - 在「可邮寄」类 `build` 方法中调用 `from`
+    - 在 `config/mail.php` 文件中
+- 视图
+    - 使用 Blade 模版
+        - 在「可邮寄」类 `build` 方法中调用 `view`
+    - 使用纯文本
+        - 在「可邮寄」类 `build` 方法中调用 `text`
+    - 使用 Markdown 格式    
+- 视图数据
+    - 在「可邮寄」类中声明公共属性
+    - 在「可邮寄」类 `build` 方法中调用 `with`
+- 附件
+    - 在「可邮寄」类 `build` 方法中调用 `attach`
+    
+### 服务

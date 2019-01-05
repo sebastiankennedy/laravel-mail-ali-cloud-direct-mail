@@ -46,7 +46,6 @@ _The code contribution process is not very formal. You just need to make sure th
 
 MIT
 
-
 ## Learning
 
 ### 疑惑
@@ -54,10 +53,13 @@ MIT
 - Laravel 基于 SwiftMailer 库提供邮件 API
     - SwiftMailer 库是什么？
     - Laravel 如何基于 SwiftMailer 提供邮件 API
+- Laravel 如何实现纯文本邮件、Blade 模版引擎邮件、Markdown 格式邮件
+- Laravel 发送邮件的生命周期
 
 ### 概念
 
 - 在 Laravel 中，每封邮件都可以表示为「可邮寄」类。
+- 在 Laravel 中，所有邮件模版都能够获取到 `$message` 变量。
 
 ### 配置
 
@@ -74,6 +76,24 @@ MIT
     - 在「可邮寄」类中声明公共属性
     - 在「可邮寄」类 `build` 方法中调用 `with`
 - 附件
-    - 在「可邮寄」类 `build` 方法中调用 `attach`
-    
+    - 一般附件
+        - 在「可邮寄」类 `build` 方法中调用 `attach`
+    - 原始数据附件
+        - 在「可邮寄」类 `build` 方法中调用 `attachData`
+    - 内部附件
+        - 在邮件模版 `$message` 变量调用 `embed`
+    - 内部原始数据附件
+        - 在邮件模版 `$message` 变量调用 `embedData`   
+- Markdown 格式的 Mailable 类    
+
 ### 服务
+
+- 队列服务
+    - 默认队列
+    - 指定队列
+    - 延时队列
+- 本地开发
+    - 日志驱动
+    - Mailtrap
+- 事件
+    - Laravel 会在发送邮件消息之前触发一个事件

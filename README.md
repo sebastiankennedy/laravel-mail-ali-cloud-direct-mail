@@ -18,13 +18,13 @@ $ composer require sebastiankennedy/laravel-mail-ali-cloud-direct-mail -vvv
 'ali_cloud_direct_mail' => [
         'access_key_id' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_ID'),
         'access_key_secret' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_SECRET'),
-        'format' => 'JSON',
-        'version' => '2015-11-23',
-        'region_id' => 'hangzhou',
-        'address_type' => 1,
-        'from_alias' => 'XXXX',
-        'click_trace' => 0,
-        'account_name' => 'XXXX@.com',
+        'format' => env('ALI_CLOUD_DIRECT_MAIL_FORMAT', 'JSON'),
+        'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', ''2015-11-23''),
+        'region_id' => env('ALI_CLOUD_DIRECT_MAIL_REGION_ID', 'hangzhou'),
+        'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
+        'from_alias' => env('ALI_CLOUD_DIRECT_MAIL_FROM_ALIAS', 'FromAliasName')',
+        'click_trace' => env('ALI_CLOUD_DIRECT_MAIL_CLICK_TRACE', 0),
+        'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME', 'account@name.com'),
     ],
 ]
 

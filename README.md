@@ -12,24 +12,26 @@ $ composer require sebastiankennedy/laravel-mail-ali-cloud-direct-mail -vvv
 ## Usage
 
 ```php
-# services.php`
+# .env
+MAIL_DRIVER=directmail
+
+# services.php
 [
-...
-'ali_cloud_direct_mail' => [
+    'ali_cloud_direct_mail' => [
         'access_key_id' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_ID'),
         'access_key_secret' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_SECRET'),
+        'from_alias' => env('ALI_CLOUD_DIRECT_MAIL_FROM_ALIAS'),
+        'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME'),
         'format' => env('ALI_CLOUD_DIRECT_MAIL_FORMAT', 'JSON'),
-        'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', ''2015-11-23''),
+        'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', '2015-11-23'),
         'region_id' => env('ALI_CLOUD_DIRECT_MAIL_REGION_ID', 'hangzhou'),
-        'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
-        'from_alias' => env('ALI_CLOUD_DIRECT_MAIL_FROM_ALIAS', 'FromAliasName'),
         'click_trace' => env('ALI_CLOUD_DIRECT_MAIL_CLICK_TRACE', 0),
-        'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME', 'account@name.com'),
+        'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
     ],
 ]
 
 # usage
-Mail::to($tutorCertification->email)->send($mailable);
+Mail::to($email)->send($mailable);
 ```
 
 ## Contributing

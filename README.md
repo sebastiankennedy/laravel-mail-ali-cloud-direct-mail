@@ -12,24 +12,26 @@ $ composer require sebastiankennedy/laravel-mail-ali-cloud-direct-mail -vvv
 ## Usage
 
 ```php
-# services.php`
+# .env
+MAIL_DRIVER=directmail
+
+# services.php
 [
-...
-'ali_cloud_direct_mail' => [
+    'ali_cloud_direct_mail' => [
         'access_key_id' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_ID'),
         'access_key_secret' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_SECRET'),
+        'from_alias' => env('ALI_CLOUD_DIRECT_MAIL_FROM_ALIAS'),
+        'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME'),
         'format' => env('ALI_CLOUD_DIRECT_MAIL_FORMAT', 'JSON'),
-        'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', ''2015-11-23''),
+        'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', '2015-11-23'),
         'region_id' => env('ALI_CLOUD_DIRECT_MAIL_REGION_ID', 'hangzhou'),
-        'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
-        'from_alias' => env('ALI_CLOUD_DIRECT_MAIL_FROM_ALIAS', 'FromAliasName')',
         'click_trace' => env('ALI_CLOUD_DIRECT_MAIL_CLICK_TRACE', 0),
-        'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME', 'account@name.com'),
+        'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
     ],
 ]
 
 # usage
-Mail::to($tutorCertification->email)->send($mailable);
+Mail::to($email)->send($mailable);
 ```
 
 ## Contributing
@@ -106,11 +108,11 @@ SwiftMailer 是一个免费、功能丰富的 PHP 邮件发送库。
 
 > Laravel 如何基于 SwiftMailer 提供邮件 API
 
-SwiftMailer 提供 Transport Pattern Implementation，可以让开发者自定义发送驱动。其中，Laravel 使用
+SwiftMailer 提供 Transport Pattern Implementation，可以让开发者自定义发送驱动。
 
 > Laravel 如何实现纯文本邮件、Blade 模版引擎邮件、Markdown 格式邮件
 
-Laravel
+// TODO
 
 > Laravel 发送邮件的整个流程
 
@@ -205,5 +207,17 @@ public function extend($driver, Closure $callback)
 ```
 
 为了更好地去理解自定义驱动的编写，我注册了一个 Mailgun 账号，测试并查看 Mailgun 驱动是如何发送邮件的。在查看源代码之后，我发现
-文件 `MailgunTransport` 以及其父类 `Transport` 和父类实现的接口 `Swift_Transport`，已经提供相关接口和实例。
+文件 `MailgunTransport` 以及其父类 `Transport` 和父类实现的接口 `Swift_Transport`，已经提供相关接口和实例。参考 `MailgunTransport`
+代码，实现代码如下：
+
+`DirectMailServiceProvider.php`
+```php
+
+```
+
+`DirectMailTransport.php`
+```php
+
+```
+
 

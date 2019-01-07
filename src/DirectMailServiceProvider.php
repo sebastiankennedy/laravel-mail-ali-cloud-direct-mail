@@ -19,7 +19,7 @@ class DirectMailServiceProvider extends ServiceProvider
             $config = $this->app['config']->get('services.ali_cloud_direct_mail', []);
 
             if (!$config) {
-                // TODO 缺少配置参数
+                throw new
             }
 
             if (array_keys(['access_key_id', 'access_key_secret', 'from_alias', 'account_name'], $config)) {

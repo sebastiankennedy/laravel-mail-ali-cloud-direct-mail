@@ -4,12 +4,16 @@ namespace SebastianKennedy\LaravelMailAliCloudDirectMail;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
+use SebastianKennedy\Exceptions\EmptyArgumentException;
+use SebastianKennedy\Exceptions\InvalidConfigurationException;
 
 /**
  * Class DirectMailServiceProvider.
  */
 class DirectMailServiceProvider extends ServiceProvider
 {
+    const REQUIRE_CONFIG = ['access_key_id', 'access_key_secret', 'from_alias', 'account_name'];
+
     /**
      * Register the service provider.
      */
@@ -19,11 +23,11 @@ class DirectMailServiceProvider extends ServiceProvider
             $config = $this->app['config']->get('services.ali_cloud_direct_mail', []);
 
             if (!$config) {
-                throw new
+                throw new EmptyArgumentException("");
             }
 
-            if (array_keys(['access_key_id', 'access_key_secret', 'from_alias', 'account_name'], $config)) {
-                // TODO 缺少必要配置参数
+            if (array_diff_key($config, self::REQUIRE_CONFIG) !== self::REQUIRE_CONFIG) {
+                throw new InvalidConfigurationException("");
             }
 
             return new DirectMailTransport(new Client(), $config['access_key_secret'], $config);

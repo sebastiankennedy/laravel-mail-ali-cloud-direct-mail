@@ -4,9 +4,9 @@ namespace SebastianKennedy\LaravelMailAliCloudDirectMail;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
-use SebastianKennedy\Exceptions\EmptyArgumentException;
-use SebastianKennedy\Exceptions\EmptyConfigException;
-use SebastianKennedy\Exceptions\InvalidConfigException;
+use SebastianKennedy\LaravelMailAliCloudDirectMail\Exceptions\EmptyArgumentException;
+use SebastianKennedy\LaravelMailAliCloudDirectMail\Exceptions\EmptyConfigException;
+use SebastianKennedy\LaravelMailAliCloudDirectMail\Exceptions\InvalidConfigException;
 
 /**
  * Class DirectMailServiceProvider.
@@ -43,7 +43,7 @@ class DirectMailServiceProvider extends ServiceProvider
             }
 
             foreach (self::CONFIG_KEYS as $key) {
-                if (array_key_exists($key, $config)) {
+                if (!array_key_exists($key, $config)) {
                     throw new EmptyArgumentException("{$key} cannot be empty.");
                 }
 

@@ -68,11 +68,8 @@ class DirectMailTransport extends Transport
 
         $message->setBcc([]);
 
-        $this->client->request(
-            'POST',
-            $this->url,
-            $this->payload($message, $to)
-        );
+        $payload = ['query' => $this->payload($message, $to)];
+        $this->client->request('POST', $this->url, $payload);
 
         $this->sendPerformed($message);
 

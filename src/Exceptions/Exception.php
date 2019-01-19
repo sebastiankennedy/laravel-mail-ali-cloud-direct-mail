@@ -1,6 +1,6 @@
 <?php
 
-namespace SebastianKennedy\Exceptions;
+namespace SebastianKennedy\LaravelMailAliCloudDirectMail\Exceptions;
 
 class Exception extends \Exception
 {

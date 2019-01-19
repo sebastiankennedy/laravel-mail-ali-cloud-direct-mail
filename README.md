@@ -24,7 +24,7 @@ MAIL_DRIVER=directmail
         'account_name' => env('ALI_CLOUD_DIRECT_MAIL_ACCOUNT_NAME'),
         'format' => env('ALI_CLOUD_DIRECT_MAIL_FORMAT', 'JSON'),
         'version' => env('ALI_CLOUD_DIRECT_MAIL_VERSION', '2015-11-23'),
-        'region_id' => env('ALI_CLOUD_DIRECT_MAIL_REGION_ID', 'hangzhou'),
+        'region_id' => env('ALI_CLOUD_DIRECT_MAIL_REGION_ID', 'cn-hangzhou'),
         'click_trace' => env('ALI_CLOUD_DIRECT_MAIL_CLICK_TRACE', 0),
         'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
     ],

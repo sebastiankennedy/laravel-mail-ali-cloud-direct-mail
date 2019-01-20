@@ -79,10 +79,11 @@ class DirectMailTransport extends Transport
     /**
      * Get the HTTP payload for sending the DirectMail message.
      *
-     * @param  \Swift_Mime_SimpleMessage $message
-     * @param  string                    $to
+     * @param Swift_Mime_SimpleMessage $message
+     * @param                          $to
      *
      * @return array
+     * @throws \Exception
      */
     protected function payload(Swift_Mime_SimpleMessage $message, $to)
     {
@@ -94,7 +95,7 @@ class DirectMailTransport extends Transport
             'SignatureNonce' => uniqid(),
             'SignatureMethod' => array_get($this->config, 'signature_method', 'HMAC-SHA1'),
             'SignatureVersion' => array_get($this->config, 'signature_version', '1.0'),
-            'Timestamp' => date('Y-m-d\TH:i:s\Z'),
+            'Timestamp' => $this->generateUtcTimestamp(),
             'Action' => array_get($this->config, 'action', 'SingleSendMail'),
             'AddressType' => array_get($this->config, 'address_type', 1),
             'FromAlias' => array_get($this->config, 'from_alias'),
@@ -111,6 +112,20 @@ class DirectMailTransport extends Transport
         $parameters = ['Signature' => $this->generateSignature($parameters)] + $parameters;
 
         return $parameters;
+    }
+
+    /**
+     * Generate UTC timestamp
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function generateUtcTimestamp()
+    {
+        $dateTime = new \DateTime();
+        $dateTime->setTimezone(new \DateTimeZone('UTC'));
+
+        return $dateTime->format('Y-m-d\TH:i:s\Z');
     }
 
     /**

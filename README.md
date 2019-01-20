@@ -11,11 +11,13 @@ $ composer require sebastiankennedy/laravel-mail-ali-cloud-direct-mail -vvv
 
 ## Usage
 
+`.env` 
 ```php
-# .env
-MAIL_DRIVER=directmail
+MAIL_DRIVER=ali_cloud_direct_mail
+```
 
-# services.php
+`services.php`
+```php
 [
     'ali_cloud_direct_mail' => [
         'access_key_id' => env('ALI_CLOUD_DIRECT_MAIL_ACCESS_KEY_ID'),
@@ -29,9 +31,17 @@ MAIL_DRIVER=directmail
         'address_type' => env('ALI_CLOUD_DIRECT_MAIL_ADDRESS_TYPE', 1),
     ],
 ]
+```
 
-# usage
+Usage
+```
+use Illuminate\Support\Facades\Mail;
+
+...
+
 Mail::to($email)->send($mailable);
+
+...
 ```
 
 ## Contributing

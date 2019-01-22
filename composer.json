@@ -1,5 +1,5 @@
 {
-    "name": "sebastiankennedy\/laravel-mail-ali-cloud-direct-mail",
+    "name": "sebastiankennedy/laravel-mail-ali-cloud-direct-mail",
     "type": "library",
     "description": "Ali Cloud Direct Mail for Laravel Application.",
     "license": "MIT",
@@ -12,11 +12,14 @@
     "require": {
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^5.5",
-        "swiftmailer/swiftmailer": "^6.1"
+        "swiftmailer/swiftmailer": "^6.1",
+        "phpunit/phpunit": "^7.5",
+        "mockery/mockery": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "SebastianKennedy\\LaravelMailAliCloudDirectMail\\": "src"
+            "SebastianKennedy\\LaravelMailAliCloudDirectMail\\": "src",
+            "SebastianKennedy\\LaravelMailAliCloudDirectMail\\Tests": "tests"
         }
     },
     "extra": {
